@@ -30,10 +30,10 @@ socket.on("tanks/tank1/recieve/hitBy", function(payload){
 })
 
 
-function alterHealth(id, amount){
-  tank = document.getElementById(id)
+  function alterHealth(id, amount){
+    tank = document.getElementById(id)
 
-current_health = parseInt(document.getElementById(id).style.width.slice(0,2))
-new_health = current_health - parseInt(amount)
-  tank.setAttribute("style", `width: ${new_health}%`)
-}
+  current_health = parseInt(document.getElementById(id).style.width.slice(0,2))
+  new_health = current_health - parseInt(amount)
+    tank.setAttribute("style", `width: ${new_health}%`)
+  }
