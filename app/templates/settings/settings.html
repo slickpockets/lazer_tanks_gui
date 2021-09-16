@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="row">
+   <div class="col s12">
+     <ul class="tabs">
+       <li class="tab col s3"><a class="active"  href="#gameMode">Game Mode</a></li>
+       <li class="tab col s3"><a  href="#powerups">Powerups</a></li>
+       <li class="tab col s3"><a href="#lives">Lives</a></li>
+       <li class="tab col s3"><a href="#wifi">game</a></li>
+     </ul>
+   </div>
+   <div id="powerups" class="col s12">
+     {% include 'partials/powerups.html' %}
+
+   </div>
+   <div id="lives" class="col s12">
+     {% include 'partials/_slider.html' %}
+
+     </div>
+   <div id="gameMode" class="col s12">
+     {% include 'partials/_dropdown.html' %}
+
+   </div>
+   <div id="wifi" class="col s12">
+     {% include 'partials/wifi.html' %}
+</div>
+ </div>
+
+
+
+
+
+
+ <script src="{{url_for('static', filename='js/settings.js')}}"></script>
+
+
+{% endblock %}

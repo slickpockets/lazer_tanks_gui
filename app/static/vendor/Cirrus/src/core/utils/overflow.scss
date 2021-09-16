@@ -1,0 +1,24 @@
+@import '../../../helpers/_functions';
+@import '../../../helpers/_size';
+
+$overflow: (auto, hidden, visible, scroll);
+@include generate-classes-for-viewport(
+    $overflow,
+    'overflow',
+    delimitize('overflow'),
+    $generate-viewports: #{get-viewport-flag('OVERFLOW')}
+);
+// NOTE: We have now changed u-hide-overflow to u-overflow-hidden
+
+@include generate-classes-for-viewport(
+    $overflow,
+    'overflow-x',
+    delimitize('overflow-x'),
+    $generate-viewports: #{get-viewport-flag('OVERFLOW')}
+);
+@include generate-classes-for-viewport(
+    $overflow,
+    'overflow-y',
+    delimitize('overflow-y'),
+    $generate-viewports: #{get-viewport-flag('OVERFLOW')}
+);

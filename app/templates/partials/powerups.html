@@ -1,0 +1,34 @@
+<h2> Select Powerups </h2>
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Select</th>
+              <th>Powerup type</th>
+              <th>Colour/th>
+              <th>Hex</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in powerups %}
+
+          <tr>
+            <td>
+               <p>
+                <label>
+                  <input type="checkbox" />
+                  <span></span>
+                </label>
+              </p>
+            </td>
+            <td>{{powerups[i][1]}}</td>
+            <td>{{powerups[i][0]}}</td>
+            <td>{{powerups[i][2]}}</td>
+
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>

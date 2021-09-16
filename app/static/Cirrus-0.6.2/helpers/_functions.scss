@@ -1,0 +1,32 @@
+@import './_config.scss';
+
+/*
+  Functions
+*/
+
+$DELIMETER: '-';
+
+/*
+    Converts a given hex value to RGB.
+*/
+@function hex-to-rgb($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+/*
+    Generates delimited class name prefix.
+*/
+@function delimitize($name) {
+  @return $DELIMETER + $name + $DELIMETER;
+}
+
+/*
+    Fetch feature flag for different utility class types for generating viewport classes (e.g., u-flex-sm, u-flex-md, etc.).
+*/
+@function get-viewport-flag($name) {
+  @if not map-has-key($_VIEWPORT_CLASS_FLAGS, $name) {
+    @error '[get-viewport-flag] Unknown constant `#{$name}`.';
+  }
+
+  @return map-get($_VIEWPORT_CLASS_FLAGS, $name);
+}

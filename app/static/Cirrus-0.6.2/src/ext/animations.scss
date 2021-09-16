@@ -1,0 +1,254 @@
+@import '../core/theme.scss';
+/* ANIMATIONS */
+
+/* Keyframes */
+
+/* Spinning loading animation */
+@-webkit-keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+/* Heart animation */
+@-webkit-keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}
+@keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* Bounce animations */
+@-webkit-keyframes bounce {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); /* Ease-out based on power of four */
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -30px, 0);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -15px, 0);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes bounce {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); /* Ease-out based on power of four */
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -30px, 0);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        -webkit-transform: translate3d(0, -15px, 0);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hover animation */
+.hover-grow {
+    /* Mouse leave */
+    transition-duration: 0.32s;
+
+    &:hover {
+        /* Mouse enter */
+        transform: scale(1.1);
+        transition-duration: 0.08s;
+    }
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    /* Loading button position relatively for loading spinner location */
+    &.loading {
+        display: block;
+        position: relative;
+
+        /* Loading Spinner, align center by default */
+        &::after {
+            border: 2px solid map-get($grays, '400');
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            content: '';
+            display: block;
+            height: 1rem;
+            width: 1rem;
+            left: calc(50% - (1em / 1.25));
+            top: calc(50% - (1em / 1.35));
+            position: absolute;
+            -webkit-animation: loading 500ms infinite linear;
+            animation: loading 500ms infinite linear;
+        }
+
+        &.loading-white::after {
+            border-left-color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        &.loading-left {
+            padding-left: 3rem;
+
+            /* Align spinner left */
+            &::after {
+                left: 1rem;
+                right: auto;
+            }
+        }
+
+        &.loading-right {
+            padding-right: 3rem;
+
+            /* Align spinner right */
+            &::after {
+                left: auto;
+                right: 1rem;
+            }
+        }
+
+        /* Hide text in loading button */
+        &.hide-text {
+            color: transparent !important;
+        }
+    }
+
+    &.pulse {
+        animation: pound 0.35s infinite alternate;
+        -webkit-animation: pound 0.35s infinite alternate;
+        vertical-align: baseline;
+    }
+
+    &.bounce {
+        animation-name: bounce;
+        -webkit-animation-name: bounce;
+        transform-origin: center bottom;
+        -webkit-transform-origin: center bottom;
+    }
+
+    &.bounceIn {
+        animation-name: bounceIn;
+    }
+
+    &.fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+    }
+
+    &.infinite {
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        &.alternate {
+            animation-direction: alternate;
+        }
+    }
+
+    &.paused {
+        -webkit-animation-play-state: paused !important; /* Safari 4.0 - 8.0 */
+        animation-play-state: paused !important;
+    }
+}

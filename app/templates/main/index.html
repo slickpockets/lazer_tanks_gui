@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+{% block title %}LAZERTANKS BITCH{% endblock %}
+{% block content %}
+<!--LEADERBOARD NEEDS TO BE STYLED  -->
+<!-- {% include 'partials/learderboard.html' %} -->
+
+
+  <div class="progress">
+      <div id="tank1" class="determinate" style="width: 100%"></div>
+  </div>
+
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+
+
+{% endblock %}

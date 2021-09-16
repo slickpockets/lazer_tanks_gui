@@ -1,0 +1,213 @@
+@import '../core/theme.scss';
+
+/* TAGS */
+.tag {
+    align-items: center;
+    background-color: var(--cirrus-light);
+    border-radius: 0.25rem;
+    color: var(--cirrus-fg);
+    display: inline-flex;
+    font-size: 75%;
+    line-height: 1.5;
+    min-height: 1.5rem;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+
+    &.tag--large {
+        font-size: 120%;
+        padding: 0.25rem 0.75rem;
+    }
+
+    &.tag--xlarge {
+        font-size: 150%;
+        padding: 0.5rem 1.25rem;
+    }
+
+    &.tag--rounded {
+        border-radius: 290486px;
+    }
+
+    /* Delete button for tag */
+    &.tag__delete {
+        background-color: rgba(10, 10, 10, 0.2);
+        border-radius: 290486px;
+        cursor: pointer;
+        pointer-events: auto;
+        display: inline-block;
+        height: 16px;
+        max-height: 16px;
+        max-width: 16px;
+        min-height: 16px;
+        min-width: 16px;
+        position: relative;
+    }
+
+    &.tag__delete:hover {
+        background-color: rgba(10, 10, 10, 0.3);
+    }
+
+    /* Draw the delete button */
+    &.tag__delete::before,
+    &.tag__delete::after {
+        background-color: var(--cirrus-light);
+        content: '';
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+    }
+
+    &.tag__delete::before {
+        height: 1px;
+        width: 50%;
+    }
+
+    &.tag__delete::after {
+        height: 50%;
+        width: 1px;
+    }
+
+    &.tag__delete {
+        margin-left: 0.25rem;
+        margin-right: -0.125rem;
+    }
+
+    /* TAG THEMES */
+    &.tag--white {
+        background-color: #fff;
+        color: var(--cirrus-dark);
+    }
+
+    &.tag--black {
+        background-color: #000;
+        color: #fff;
+    }
+
+    &.tag--primary {
+        background-color: var(--cirrus-primary);
+        color: #fff;
+    }
+
+    @each $color, $value in $control-themes {
+        &.tag--#{$color} {
+            background-color: $value;
+            color: #fff;
+            cursor: pointer;
+
+            &.tag__close-btn:hover {
+                background-color: darken($color: $value, $amount: 5);
+            }
+
+            &.tag__close-btn:active {
+                background-color: darken($color: $value, $amount: 10);
+            }
+        }
+    }
+
+    /* Tag close button */
+    &.tag__close-btn {
+        padding: 0;
+        position: relative;
+        width: 1.5rem;
+
+        &::before,
+        &::after {
+            background-color: var(--cirrus-fg);
+            content: '';
+            display: block;
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+        }
+
+        &::before {
+            height: 1px;
+            width: 50%;
+        }
+
+        &::after {
+            height: 50%;
+            width: 1px;
+        }
+    }
+}
+
+/* TAG CONTAINER */
+.tag-container {
+    /* Add margin in between tag containers */
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    /* Used for grouping tags together */
+    &.group-tags {
+        --tag-first-border-radius: 0.25rem 0 0 0.25rem;
+        --tag-last-border-radius: 0 0.25rem 0.25rem 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        .tag {
+            margin-right: 0 !important;
+
+            &:first-child {
+                border-radius: var(--tag-first-border-radius);
+            }
+
+            &:not(:first-child):not(:last-child) {
+                border-radius: 0;
+            }
+
+            &:last-child {
+                border-radius: var(--tag-last-border-radius);
+            }
+        }
+
+        // Round first and last tag in the grouped tags
+        &.group-tags--rounded {
+            --tag-first-border-radius: 290486px 0 0 290486px;
+            --tag-last-border-radius: 0 290486px 290486px 0;
+        }
+    }
+
+    /* Tag positioning */
+    &.tag-container--centered {
+        justify-content: center;
+
+        .tag {
+            margin: 0 0.25rem;
+        }
+    }
+
+    &.tag-container--right {
+        justify-content: flex-end;
+
+        .tag:not(:first-child) {
+            margin-left: 0.5rem;
+        }
+
+        .tag:not(:last-child) {
+            margin-right: 0;
+        }
+    }
+
+    .tag {
+        margin-bottom: 0.5rem;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+/* MISC */
+a.tag:hover {
+    text-decoration: underline;
+}

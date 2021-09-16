@@ -1,0 +1,47 @@
+/* Avatar */
+
+$avatar-sizes: (
+  'xsmall': (0.8rem, 1.6rem),
+  'small': (1rem, 2.4rem),
+  'large': (2rem, 4.8rem),
+  'xlarge': (3rem, 6.4rem)
+);
+
+.avatar {
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  margin: auto;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  width: 3.2rem;
+  height: 3.2rem;
+  background-color: var(--cirrus-primary);
+  overflow: hidden;
+
+  /* Draw text on image just like in Gmail */
+  &::before {
+    content: attr(data-text);
+    color: #fff;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  @each $class, $values in $avatar-sizes {
+    &.avatar--#{$class} {
+      font-size: nth($list: $values, $n: 1);
+      width: nth($list: $values, $n: 2);
+      height: nth($list: $values, $n: 2);
+    }
+  }
+  
+  img.padded {
+    padding: 0.5rem;
+    width: 100%;
+  }
+}
