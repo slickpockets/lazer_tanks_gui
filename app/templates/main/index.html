@@ -4,10 +4,51 @@
 <!--LEADERBOARD NEEDS TO BE STYLED  -->
 <!-- {% include 'partials/learderboard.html' %} -->
 
-
-  <div class="progress">
-      <div id="tank1" class="determinate" style="width: 100%"></div>
+<div class="container">
+<br>
+<br>
+<br>
+<span><h2> Tank1:</h2>
+  <div class="ui teal progress" id="tank1">
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+    <div class="label">Tank1</div>
   </div>
+</span>
+
+<span><h2> Tank2:</h2>
+  <div class="ui  indicating progress" id="tank2">
+  <div class="bar">
+    <div class="progress"></div>
+
+  </div>
+  <div class="label">Tank2</div>
+</div>
+</span>
+
+<span><h2> Tank3:</h2>
+<div class="ui  progress" id="tank3">
+  <div class="bar">
+    <div class="progress"></div>
+
+  </div>
+  <div class="label">Tank3</div>
+</div>
+</span>
+
+<span><h2> Tank4:</h2>
+<div class="ui error progress" id="tank4">
+  <div class="bar">
+    <div class="label">Tank4</div>
+
+  </div>
+  <div class="progress"></div>
+</div>
+<span>
+</div>
+
+
 
 <script src="{{url_for('static', filename='js/index.js')}}"></script>
 

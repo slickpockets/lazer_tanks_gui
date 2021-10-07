@@ -14,18 +14,19 @@ def index():
 
 
 powerups = {
-    0: ["off", "none", "0x000000"],
-    1: ["red", "Fire Rate", "0x000000"],
-    2: ["orange", "Damage Increase", ""],
-    3: ["yellow", "Damage Resistance", ""],
-    4: ["green", "Repair", "0x00FF00"],
-    5: ["blue", "Movement Speed", "0x0000FF"],
-    6: ["cyan", "Shield", ""],
-    7: ["magenta", "Turret Rotation", ""],
-    8: ["white", "Remove Debuff | Neutral Flag", "0xFFFFFF"],
-    9: ["rainbow", "Random", "(alternating)"],
-    10: ["red/yellow", "Team Flag (Warm)", "(alternating)"],
-    11: ["green/blue", "Team Flag (Cool)", "(alternating)"],
+    0: ["all", "All powerups", ""],
+    1: ["off", "none", "0x000000"],
+    2: ["red", "Fire Rate", "0x000000"],
+    3: ["orange", "Damage Increase", ""],
+    4: ["yellow", "Damage Resistance", ""],
+    5: ["green", "Repair", "0x00FF00"],
+    6: ["blue", "Movement Speed", "0x0000FF"],
+    7: ["cyan", "Shield", ""],
+    8: ["magenta", "Turret Rotation", ""],
+    9: ["white", "Remove Debuff | Neutral Flag", "0xFFFFFF"],
+    10: ["rainbow", "Random", "(alternating)"],
+    11: ["red/yellow", "Team Flag (Warm)", "(alternating)"],
+    12: ["green/blue", "Team Flag (Cool)", "(alternating)"],
 
 }
 
@@ -66,15 +67,12 @@ def testing(client, userdata, message):
     socketio.emit("testing", payload)
 
 
-@mqtt.on_topic("/tanks/tank1/recieve/hitBy")
+@mqtt.on_topic("tanks/tank1/recieve/hitBy")
 def tank1_hit(client, userdata, message):
     msg = message.payload.decode()
-    print(msg, flush=True)
-    payload = {
-        "id": "tank1",
-        "amount": 50
-    }
-    socketio.emit("tanks/tank1/recieve/hitBy", payload)
+    results = json.loads(msg)
+    print(results["id"], results["amount"], flush=True)
+    socketio.emit("tanks/tank1/recieve/hitBy", results)
 
 
 #

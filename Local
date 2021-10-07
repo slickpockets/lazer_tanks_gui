@@ -1,0 +1,3 @@
+mos: mosquitto -c /etc/mosquitto/mosquitto.conf
+flask: python3 app.py
+

@@ -1,5 +1,6 @@
-  const socket = io("http://0.0.0.0:5000")
 
+  var url =  window.location.hostname;
+  var socket = io(url  + ":5000");
 
 socket.on("testing", function(payload){
   // console.log(`topic: ${topic} and message: ${msg}`)
@@ -25,10 +26,10 @@ socket.on("tanks/tank3", function(payload){
 })
 
 socket.on("tanks/tank1/recieve/hitBy", function(payload){
-  [id, amount] = payload;
-  alterHealth(id, payload)
-})
+  console.log(payload["id"], payload["amount"]);
 
+  alterHealth(payload["id"], payload["amount"])
+})
 
   function alterHealth(id, amount){
     tank = document.getElementById(id)
